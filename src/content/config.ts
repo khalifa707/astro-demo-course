@@ -5,8 +5,9 @@ import { defineCollection, z } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 
 // 3. Define your collection(s)
-const blog = defineCollection({ /* ... */ });
-const dogs = defineCollection({ /* ... */ });
+const postsCollection = defineCollection({ /* ... */ });
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { blog, dogs };
+export const collections = {
+    posts: postsCollection,
+};
