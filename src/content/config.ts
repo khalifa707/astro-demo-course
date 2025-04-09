@@ -8,8 +8,7 @@ import {format} from 'date-fns';
 const postsCollection = defineCollection({
     schema:z.object({
         author:z.string(),
-        category:z.array(z.string()),
-        description:z.string(),
+        categories:z.array(z.string()),
         title:z.string(),
         date:z.string().transform(str=>format(new Date(str), 'MM-dd-yyyy')),
         featured:z.boolean().default(false),
