@@ -5,6 +5,24 @@ type Props = {
     post: CollectionEntry<"posts">
 }
 
-const {post} = Astro.props;
+const { post } = Astro.props;
+
+// For newer Astro versions, get the slug from the id
+// by removing the file extension
+const slug = post.id.replace(/\.[^/.]+$/, "");
 ---
-<h2>{post.data.title}</h2>
+
+<article>
+    <a href={`/blog/${slug}`}>
+        <img
+                src={post.data.image}
+                alt={post.data.title}
+                width="1024"
+                height="512"
+                class="rounded-2xl shadow-xl mb-6 aspect-thumbnail object-cover"
+        />
+    </a>
+    <a href={`/blog/${slug}`}>
+        <h2>{post.data.title}</h2>
+    </a>
+</article>
