@@ -1,16 +1,18 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 /** @type {import('tailwindcss').Config} */
-export default {
+// tailwind.config.js
+module.exports = {
     content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
     theme: {
         extend: {
-            aspectRatio:{
-                thumbnail: '1.5',
+            aspectRatio: {
+                thumbnail: "1.5",
             },
             fontFamily: {
-                sans: ['Cabin', ...defaultTheme.fontFamily.sans], // This sets Cabin as the default font
+                sans: ["Cabin", ...defaultTheme.fontFamily.sans],
             },
-        },
+        }
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/typography")],
 }
