@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from '../../layouts/Layout.astro';
 import Main from '../../components/Main.astro'
+import '../../styles/global.css'
 
 
 export const getStaticPaths = async () => {
@@ -28,7 +29,6 @@ const { post } = Astro.props;  // Changed from posts to post
 
 <Layout title={post.data.title}>
     <Main>
-        <h1>{post.data.title}</h1>
-        <p>{post.data.author}</p>
+        <a href="/blog" class="text-zinc-500 text-2xl mb-16 underline">Back to all Blogs</a>
     </Main>
 </Layout>
