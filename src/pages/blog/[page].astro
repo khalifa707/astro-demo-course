@@ -1,0 +1,38 @@
+---
+import type { GetStaticPathsOptions, PaginateFunction } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import "../../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
+import Main from "../../components/Main.astro";
+import PostList from "../../components/PostList.astro";
+import H1 from "../../components/H1.astro";
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+    const allPosts = await getCollection("posts");
+    return paginate(allPosts, {pageSize: 6});
+}
+
+type Props = {
+    page: {
+        data: CollectionEntry<"posts">[];
+        currentPage: number;
+        lastPage: number;
+        url: {
+            prev: string | undefined;
+            next: string | undefined;
+        };
+    }
+}
+
+const { page } = Astro.props;
+const posts = page.data;
+---
+
+<Layout title="Blog - Astro Course">
+    <Main>
+        <H1 text="Rhythm Nation Blog"/>
+        <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">Join the community and learn from music producers and Enthusiasts</p>
+        <PostList posts={posts} />
+    </Main>
+</Layout>
