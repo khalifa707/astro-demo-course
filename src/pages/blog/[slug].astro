@@ -40,9 +40,9 @@ const {Content, headings} = await post.render();
                 style="margin-bottom: 4rem;"
         />
         <div class="relative flex gap-x-12">
-        <div class="prose prose-2xl !prose-headings:text-red-500 overflow-visible relative">
-            <Content />
-        </div>
+            <div class="prose prose-2xl overflow-visible relative">
+                <Content />
+            </div>
             <TableOfContent headings={headings}/>
         </div>
     </Main>
