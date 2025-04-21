@@ -5,6 +5,7 @@ import Main from '../../components/Main.astro'
 import '../../styles/global.css'
 import H1 from "../../components/H1.astro";
 import TableOfContent from "../../components/TableOfContent.astro";
+import Share from "../../components/Share.astro";
 
 export const getStaticPaths = async () => {
     const posts = await getCollection("posts");
@@ -39,11 +40,14 @@ const {Content, headings} = await post.render();
                 class="rounded-2xl shadow-xl aspect-thumbnail object-cover"
                 style="margin-bottom: 4rem;"
         />
-        <div class="relative flex gap-x-12">
+        <div class="mb-10">
+            <TableOfContent headings={headings}/>
+        </div>
+        <div class="relative">
+            <Share post={post}/>
             <div class="prose prose-2xl overflow-visible relative">
                 <Content />
             </div>
-            <TableOfContent headings={headings}/>
         </div>
     </Main>
 </Layout>
